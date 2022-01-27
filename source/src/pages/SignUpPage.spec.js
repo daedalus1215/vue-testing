@@ -1,6 +1,7 @@
 import SignUpPage from './SignUpPage.vue';
 import { render, screen } from '@testing-library/vue';
 import "@testing-library/jest-dom";
+import userEvent from "@testing-library/user-event";
 
 describe("Sign Up Page", () => {
     describe("Layout", () => {
@@ -24,12 +25,31 @@ describe("Sign Up Page", () => {
             expect(input).toBeInTheDocument();
             expect(input.type).toBe("password");
         })
-        it('has Sign Up button', () => {
+        it('has repeat password input', () => {
+            render(SignUpPage);
+            const input = screen.queryByLabelText("Repeat Password");
+            expect(input).toBeInTheDocument();
+            expect(input.type).toBe("password");
+        })
+        it('disables the button initially', () => {
             render(SignUpPage);
             const input = screen.queryByRole("button", {name: "Sign Up"});
             expect(input).toBeInTheDocument();
             expect(input).toBeDisabled();
-
         })
+    });
+
+    describe('Interactions', () => {
+        // it('enables the button when the password and password repeat fields have the same values', async () => {
+        //     render(SignUpPage);
+        //     const passwordInput = screen.queryAllByAltText("Password")
+        //     const repeatPasswordInput = screen.queryAllByAltText("Repeat Password")
+        //     await userEvent.type(passwordInput, "P4ssword");
+        //     await userEvent.type(repeatPasswordInput, "P4ssword");
+
+        //     const input = screen.queryByRole("button", { name: "Sign Up" });
+        //     expect(input).toBeInTheDocument();
+        //     expect(input).toBeEnabled();
+        // })
     });
 });

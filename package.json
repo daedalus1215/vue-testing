@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "@vue/cli": "^4.5.15"
+  },
+  "devDependencies": {
+    "@testing-library/user-event": "^13.5.0"
   }
 }
