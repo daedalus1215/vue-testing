@@ -1,5 +1,5 @@
-const SignUpPage = require('./SignUpPage.vue');
-const {render, screen } = require('@testing-library/vue');
+import SignUpPage from './SignUpPage.vue';
+import {render, screen } from '@testing-library/vue';
 
 it('has Sign Up Header', () => {
     render(SignUpPage);

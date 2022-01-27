@@ -45,8 +45,12 @@
     "not dead"
   ],
   "jest": {
+    "moduleFileExtensions": [
+      "js", "vue"
+    ],
     "transform": {
-      ".*\\.(vue)$": "vue-jest"
+      ".*\\.(vue)$": "vue-jest",
+      ".*\\.(js)$": "babel-jest"
     }
   }
 }
