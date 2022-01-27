@@ -9,8 +9,20 @@ describe("Sign Up Page", () => {
             expect(screen.queryByRole('heading', { name: 'Sign Up' })).toBeInTheDocument();
         })
         it('has username input', () => {
-            const { container } = render(SignUpPage);
-            expect(container.querySelector("input")).toBeInTheDocument();
+            render(SignUpPage);
+            const input = screen.queryByLabelText("Username");
+            expect(input).toBeInTheDocument();
+        })
+        it('has email input', () => {
+            render(SignUpPage);
+            const input = screen.queryByLabelText("E-mail");
+            expect(input).toBeInTheDocument();
+        })
+        it('has password input', () => {
+            render(SignUpPage);
+            const input = screen.queryByLabelText("Password");
+            expect(input).toBeInTheDocument();
+            expect(input.type).toBe("password");
         })
     });
 });
