@@ -24,5 +24,12 @@ describe("Sign Up Page", () => {
             expect(input).toBeInTheDocument();
             expect(input.type).toBe("password");
         })
+        it('has Sign Up button', () => {
+            render(SignUpPage);
+            const input = screen.queryByRole("button", {name: "Sign Up"});
+            expect(input).toBeInTheDocument();
+            expect(input).toBeDisabled();
+
+        })
     });
 });

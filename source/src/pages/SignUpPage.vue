@@ -10,5 +10,7 @@
     
     <label for="password">Password</label>
     <input placeholder="password" id="password" type="password"/>
+
+    <button disabled="true">Sign Up</button>
   </div>
 </template>
