@@ -24,7 +24,7 @@
       @input="onChangeRepeatPassword"
     />
 
-    <button :disabled="isDisabled()">Sign Up</button>
+    <button :disabled="isDisabledComputed">Sign Up</button>
   </div>
 </template>
 
@@ -45,8 +45,13 @@ export default {
       this.repeatPassword = event.target.value;
     },
     isDisabled() {
-        return (this.password && this.repeatPassword) ? this.password !== this.repeatPassword : true;
-    }
+          return (this.password && this.repeatPassword) ? this.password !== this.repeatPassword : true;
+      }
   },
+  computed: {
+      isDisabledComputed() {
+          return (this.password && this.repeatPassword) ? this.password !== this.repeatPassword : true;
+      }
+  }
 };
 </script>
