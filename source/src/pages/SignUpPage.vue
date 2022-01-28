@@ -3,17 +3,17 @@
     <h1>Sign Up</h1>
 
     <label for="username">Username</label>
-    <input placeholder="username" id="username" />
+    <input placeholder="username" id="username" :value="username" />
 
     <label for="email">E-mail</label>
-    <input placeholder="email" id="email" />
+    <input placeholder="email" id="email" :value="email" />
 
     <label for="password">Password</label>
     <input
       placeholder="password"
       id="password"
       type="password"
-      @input="onChangePassword"
+      v-model="password"
     />
 
     <label for="repeat-password">Repeat Password</label>
@@ -21,7 +21,7 @@
       placeholder="repeat password"
       id="repeat-password"
       type="password"
-      @input="onChangeRepeatPassword"
+      v-model="repeatPassword"
     />
 
     <button :disabled="isDisabledComputed">Sign Up</button>
@@ -33,6 +33,8 @@ export default {
   name: "SignUpPage",
   data() {
     return {
+      username: "",
+      email: "",
       password: "",
       repeatPassword: "",
     };
@@ -45,13 +47,17 @@ export default {
       this.repeatPassword = event.target.value;
     },
     isDisabled() {
-          return (this.password && this.repeatPassword) ? this.password !== this.repeatPassword : true;
-      }
+      return this.password && this.repeatPassword
+        ? this.password !== this.repeatPassword
+        : true;
+    },
   },
   computed: {
-      isDisabledComputed() {
-          return (this.password && this.repeatPassword) ? this.password !== this.repeatPassword : true;
-      }
-  }
+    isDisabledComputed() {
+      return this.password && this.repeatPassword
+        ? this.password !== this.repeatPassword
+        : true;
+    },
+  },
 };
 </script>
