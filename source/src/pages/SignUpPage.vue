@@ -9,10 +9,20 @@
     <input placeholder="email" id="email" />
 
     <label for="password">Password</label>
-    <input placeholder="password" id="password" type="password" />
+    <input
+      placeholder="password"
+      id="password"
+      type="password"
+      @input="onChangePassword"
+    />
 
     <label for="repeat-password">Repeat Password</label>
-    <input placeholder="repeat password" id="repeat-password" type="password" />
+    <input
+      placeholder="repeat password"
+      id="repeat-password"
+      type="password"
+      @input="onChangeRepeatPassword"
+    />
 
     <button :disabled="disabled">Sign Up</button>
   </div>
@@ -24,7 +34,19 @@ export default {
   data() {
     return {
       disabled: true,
+      password: "",
+      repeatPassword: "",
     };
+  },
+  methods: {
+    onChangePassword(event) {
+      this.password = event.target.value;
+      this.disabled = this.password !== this.repeatPassword;
+    },
+    onChangeRepeatPassword(event) {
+      this.repeatPassword = event.target.value;
+      this.disabled = this.password !== this.repeatPassword;
+    },
   },
 };
 </script>
